@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINU QUEENS | CAKE LORDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-pink: #ff007f;
+            --cyber-blue: #00f2ff;
+            --dark-void: #0a0a0a;
+            --meme-white: #ffffff;
+            --impact-font: 'Anton', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-void);
+            color: var(--meme-white);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glitchy Navbar */
+        nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+            border-bottom: 2px solid var(--neon-pink);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--cyber-blue);
+            text-shadow: 0 0 10px var(--cyber-blue);
+            transform: scale(1.1);
+        }
+
+        /* Hero: The "Main Character" Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url("https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1600&q=80") center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--cyber-blue);
+        }
+
+        .hero h1 {
+            font-family: var(--impact-font);
+            font-size: clamp(4rem, 15vw, 10rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            -webkit-text-stroke: 2px var(--neon-pink);
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            background: var(--cyber-blue);
+            color: black;
+            padding: 5px 20px;
+            font-weight: 800;
+            transform: rotate(-2deg);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: var(--impact-font);
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+        }
+
+        /* Meme-ified Cake Cards */
+        .cakes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            position: relative;
+            background: #1a1a1a;
+            border: 3px solid #333;
+            border-radius: 0px; /* Sharp corners for that edgy look */
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--neon-pink);
+            transform: scale(1.02) rotate(1deg);
+            box-shadow: 10px 10px 0px var(--neon-pink);
+        }
+
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: 0.5s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%) contrast(120%);
+        }
+
+        /* The Meme Overlay */
+        .meme-caption {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            opacity: 0;
+            transition: 0.3s;
+            background: rgba(255, 0, 127, 0.2);
+            pointer-events: none;
+        }
+
+        .card:hover .meme-caption {
+            opacity: 1;
+        }
+
+        .meme-text {
+            font-family: var(--impact-font);
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            -webkit-text-stroke: 1.5px black;
+            line-height: 1;
+        }
+
+        /* Interaction: The Wisdom Generator */
+        #wisdom-box {
+            background: #222;
+            padding: 40px;
+            border-left: 10px solid var(--cyber-blue);
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--neon-pink);
+            color: white;
+            padding: 20px 40px;
+            font-family: var(--impact-font);
+            font-size: 1.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .cta-button:hover {
+            background: var(--cyber-blue);
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 2px solid #333;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#cakes">The Goods</a>
+    <a href="#about">Lore</a>
+    <a href="#contact">Call Us</a>
+</nav>
+
+<section class="hero">
+    <h1>DINU QUEENS</h1>
+    <p>IT'S NOT A CAKE, IT'S A LIFESTYLE</p>
+    <br>
+    <button onclick="generateWisdom()" class="cta-button">Get Cake Wisdom</button>
+</section>
+
+<section id="cakes" class="section">
+    <h2>TOP TIER SLICES</h2>
+    <div class="cakes-grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605475128023-2f02c8bcb66b?auto=format&fit=crop&w=600&q=80" alt="Chocolate">
+            <div class="meme-caption">
+                <div class="meme-text">TOP TEXT: CHOCOLATE</div>
+                <div class="meme-text">BOTTOM TEXT: HAPPINESS</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Strawberry">
+            <div class="meme-caption">
+                <div class="meme-text">POV: YOU BOUGHT</div>
+                <div class="meme-text">THE LAST SLICE</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=600&q=80" alt="Gold">
+            <div class="meme-caption">
+                <div class="meme-text">ABSOLUTE</div>
+                <div class="meme-text">UNIT</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="wisdom-box" class="section">
+    <h3 style="font-size: 2rem; margin-bottom: 20px;">📜 THE ANCIENT SCROLLS SAY:</h3>
+    <p id="wisdom-display" style="font-size: 1.5rem; color: var(--cyber-blue);">Click the button above to reveal the truth.</p>
+</div>
+
+<section id="about" class="section" style="text-align: center;">
+    <h2>THE LORE</h2>
+    <p style="font-size: 1.5rem; line-height: 2;">
+        Dinu Queens didn't just spawn. We leveled up. We use ingredients so fresh they're basically 4K resolution. 
+        If our cakes were any more legendary, they'd be nerfed in the next patch.
+    </p>
+</section>
+
+<footer>
+    <p>NO COOKIES WERE HARMED IN THE MAKING OF THIS WEBSITE (EXCEPT THE ONES WE ATE).</p>
+    <p>&copy; 2026 DINU QUEENS | CAKE LORD STATUS ACHIEVED.</p>
+</footer>
+
+<script>
+    const wisdoms = [
+        "A cake in the hand is worth two in the fridge.",
+        "Stressed is just Desserts spelled backwards. Think about it.",
+        "You can't buy happiness, but you can buy cake, and that's basically a DLC.",
+        "Life is short. Eat the frosting first.",
+        "Your diet starts tomorrow. It's always tomorrow."
+    ];
+
+    function generateWisdom() {
+        const randomWisdom = wisdoms[Math.floor(Math.random() * wisdoms.length)];
+        document.getElementById('wisdom-display').innerText = randomWisdom;
+        document.getElementById('wisdom-display').style.textShadow = "0 0 10px var(--cyber-blue)";
+    }
+</script>
+
+</body>
+</html>
